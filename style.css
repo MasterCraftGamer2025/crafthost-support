@@ -1,1 +1,47 @@
+body {
+  background-color: #0f172a;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  padding: 40px;
+}
 
+h1 { color: #3b82f6; }
+
+button {
+  padding: 10px 20px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+button:hover { background: #2563eb; }
+
+#ticketModal {
+  display:none;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(0,0,0,0.8);
+}
+
+#ticketForm {
+  background:#1e293b;
+  padding:20px;
+  border-radius:8px;
+  display:inline-block;
+  margin-top:50px;
+}
+
+input, textarea {
+  width:300px;
+  margin:10px 0;
+  padding:8px;
+  border-radius:5px;
+  border:none;
+  }
