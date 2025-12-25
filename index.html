@@ -1,1 +1,58 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<title>CRAFTHOST Support</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
 
+<img src="https://i.ibb.co/9kSkSHtN/logo.jpg" alt="CRAFTHOST Logo" style="width:150px; margin-bottom:20px;">
+
+<h1>CRAFTHOST Support</h1>
+
+<button onclick="openModal()">Open Support Ticket / Բացել Ticket</button>
+
+<div id="ticketModal">
+  <div id="ticketForm">
+    <h2>Create Ticket / Ստեղծել Ticket</h2>
+    <input id="name" placeholder="Անուն / Name"><br>
+    <textarea id="message" placeholder="Ticket Message / Հաղորդագրություն"></textarea><br>
+    <button onclick="createTicket()">Create Ticket / Ստեղծել</button>
+    <button onclick="closeModal()">Cancel / Չեղարկել</button>
+  </div>
+</div>
+
+<script>
+const webhookURL = "https://discord.com/api/webhooks/1453574524368064655/gE-qG1PYwGWMpl4VFIp3PhYEc6gnDu_qK3uY8ut6uNIayBpR551M4GPBL51jtk5FD0aO";
+
+function openModal() { document.getElementById('ticketModal').style.display = 'block'; }
+function closeModal() { document.getElementById('ticketModal').style.display = 'none'; }
+
+function createTicket() {
+    const name = document.getElementById('name').value;
+    const message = document.getElementById('message').value;
+
+    if(!name || !message){ alert("Fill all fields / Լրացրեք բոլոր դաշտերը"); return; }
+
+    fetch(webhookURL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+            content: `**New Ticket**\nName: ${name}\nMessage: ${message}`
+        })
+    })
+    .then(res => {
+        alert("Ticket sent to Discord! / Ticket ուղարկված է Discord-ում");
+        closeModal();
+    })
+    .catch(err => {
+        alert("Error sending ticket / Խնդիր է ուղարկել ticket-ը");
+        console.error(err);
+    });
+}
+</script>
+
+</body>
+  </html>
+  
